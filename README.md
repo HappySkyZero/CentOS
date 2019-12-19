@@ -1,37 +1,58 @@
-## Welcome to GitHub Pages
+### 目录结构
+- Bin：全称binary，含义是二进制。该目录中存储的都是一些二进制文件，文件都是可以被运行的。
+- Dev：该目录中主要存放的是外接设备，例如盘、其他的光盘等。在其中的外接设备是不能直接被使用的，需要挂载（类似windows下的分配盘符）。
+- Etc：该目录主要存储一些配置文件。
+- Home：表示“家”，表示除了root用户以外其他用户的家目录，类似于windows下的User/用户目录。
+- Proc：process，表示进程，该目录中存储的是Linux运行时候的进程。
+- Root：该目录是root用户自己的家目录。
+- Sbin：全称super binary，该目录也是存储一些可以被执行的二进制文件，但是必须得有super权限的用户才能执行。
+- Tmp：表示“临时”的，当系统运行时候产生的临时文件会在这个目录存着。
+- Usr：存放的是用户自己安装的软件。类似于windows下的program files。
+- Var：存放的程序/系统的日志文件的目录。
+- Mnt：当外接设备需要挂载的时候，就需要挂载到mnt目录下。
 
-You can use the [editor on GitHub](https://github.com/HappySkyZero/CentOS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### 基础命令
+1. list -l（详细展示） -a（所有文件/文件夹）-h（以可读性高的形式展示）
+2. pwd （打印当前工作目录）
+3. cd （改变目录） cd ~（回当前用户的家目录）
+4. mkdir  -p（一次性创建多层） ； mkdir 路径1 路径2 路径3 
+5. touch （mkdir是文件夹；touch是文件）
+6. cp 被复制路径 复制到的路径  复制文件夹用-r递归
+7. mv 被移动路径 移动到的路径 （可以用来重命名）
+8. rm -f（强行） -r（回归）
+9. vim 路径（查看文件）
+10. > 文件路径（覆盖输出重定向）     >> 文件路径（追加输出重定向）
+11. cat 文件路径 （打开文件）  （cat加重定向可以合并文件）
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/HappySkyZero/CentOS/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### 进阶命令
+1. df （查看磁盘空间大小） -h （以可读性高的形式）
+2. free （查看内存使用情况） -m （以mb单位查看）
+3. head -n 路径 （查看一个文件的前n行）
+4. tail -n 路径（查看一个文件的后n行）tail -f 文件路径（查看动态变化内容）
+5. less 路径（以较少内容查看文件，按数字加回车或用空格和上下查看更多）
+6. wc -lwc 路径（统计文件内容信息）
+    -l（lines行数） -w（words单词数） -c（bytes字节数）
+7. date 输出的形式：2018年 3月 24日 星期六 15:54:28
+   date +%F （等价于date“+%Y-%m-%d” ）输出形式：2018-03-24
+   date “+%F %T”    引号表示让“年月日与时分秒”成为一个不可分割的整体/， 等价操作date  “+%Y-%m-%d %H:%M:%S”
+            输出的形式：2018-03-24 16:01:00
+   date -d  “-1 day”  “+%Y-%m-%d %H:%M:%S”
+符号的可选值：+（之后） 或者 - （之前）
+单位的可选值：day（天）、month（月份）、year（年）
+>>%F：表示完整的年月日
+>>%T：表示完整的时分秒
+>>%Y：表示四位年份
+>>%m：表示两位月份（带前导0）
+>>%d：表示日期（带前导0）
+>>%H：表示小时（带前导0）
+>>%M：表示分钟（带前导0）
+>>%S：表示秒数（带前导0）
+8. cal（用来操作日历）
+    cal 等价于cal -1（输出当前月份的日历）
+    cal -3 （输出本月加前后两月的日历）
+    cal -y 年份（输出某一年的日历）
+9. clear/ctrl+L （清楚终端的命令和结果）
+10. | （管道符，前面的输出是后面的输入）
+    输入|grep 字符（前输出包含字符的列表）
+    
+### 高级指令
